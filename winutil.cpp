@@ -427,6 +427,16 @@ void ListBox::RemoveLine(int position) {
 
 void ListBox::Clear() { SendMessageW(Handle(), LB_RESETCONTENT, 0, 0); }
 
+int ListBox::GetCount() { return SendMessageW(Handle(), LB_GETCOUNT, 0, 0); }
+
+int ListBox::GetSelectedItem() {
+  int res = SendMessageW(Handle(), LB_GETCURSEL, 0, 0);
+  if (res == LB_ERR) {
+    return -1;
+  }
+  return res;
+}
+
 Widget::WidgetCreationOptions ListBox::GetCreationOptions() {
   WidgetCreationOptions options = {0};
   options.dwExStyle = WS_EX_CLIENTEDGE;

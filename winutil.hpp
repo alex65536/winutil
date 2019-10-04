@@ -197,6 +197,9 @@ class ListBox : public Widget {
   void InsertLine(int position, const std::wstring &line);
   void RemoveLine(int position);
   void Clear();
+  
+  int GetCount();
+  int GetSelectedItem();
 
  private:
   WidgetCreationOptions GetCreationOptions();
